@@ -1,0 +1,29 @@
+[project]
+name = "mcp-youtube"
+version = "0.1.0"
+description = "MCP server to work with YouTube"
+requires-python = ">=3.11"
+dependencies = [
+  "mcp>=1.1.0",
+  "pydantic>=2.0.0",
+  "pydantic-settings>=2.6.0",
+  "typer>=0.15.0",
+  "xdg-base-dirs>=6.0.0",
+  "youtube-transcript-api",
+]
+
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = ["mypy>=1.13.0"]
+
+[project.scripts]
+mcp-youtube = "mcp_youtube:app"
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
