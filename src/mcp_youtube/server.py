@@ -46,8 +46,8 @@ async def list_prompts() -> list[Prompt]:
     return [
         Prompt(
             name="YoutubeVideoSummary",
-            description="Create a summary of the given video.",
-            arguments=[PromptArgument(name="yt_url", description="URL of the video", required=True)],
+            description="Create a summary of the given Youtube video.",
+            arguments=[PromptArgument(name="video_url", description="URL of the Youtube video", required=True)],
         ),
     ]
 
@@ -56,9 +56,9 @@ async def list_prompts() -> list[Prompt]:
 async def get_prompt(name: str, args: dict[str, str] | None = None) -> GetPromptResult:
     """Get a prompt by name."""
     if name == "YoutubeVideoSummary":
-        url = args.get("yt_url") if args else None
+        url = args.get("video_url") if args else None
         if not url:
-            raise ValueError("yt_url is required")
+            raise ValueError("video_url is required")
         return GetPromptResult(
             messages=[
                 PromptMessage(
@@ -117,7 +117,7 @@ async def call_tool(name: str, arguments: t.Any) -> Sequence[TextContent | Image
 
     try:
         args = tools.tool_args(tool, **arguments)
-        return await tools.tool_runner(app.request_context.session, args)
+        return await tools.tool_runner(args)
     except Exception as e:
         logger.exception("Error running tool: %s", name)
         raise RuntimeError(f"Caught Exception. Error: {e}") from e
