@@ -66,12 +66,13 @@ Configure Claude Desktop to recognize the Exa MCP server.
     ```json
     {
       "mcpServers": {
-        "mcp-telegram": {
+        "mcp-youtube": {
             "command": "mcp-youtube",
           }
         }
       }
     }
+
     ```
 
 ## Development
