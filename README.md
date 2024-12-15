@@ -49,10 +49,9 @@ uv tool install git+https://github.com/sparfenyuk/mcp-youtube
 
 ## Configuration
 
-
 ### Claude Desktop Configuration
 
-Configure Claude Desktop to recognize the Exa MCP server.
+Configure Claude Desktop to recognize the Youtube MCP server.
 
 1. Open the Claude Desktop configuration file:
    - in MacOS, the configuration file is located at `~/Library/Application Support/Claude/claude_desktop_config.json`
